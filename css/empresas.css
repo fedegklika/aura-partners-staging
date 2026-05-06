@@ -437,8 +437,7 @@
   transition: border-color var(--t-fast);
 }
 
-.semaforo__form input:focus {
-  outline: none;
+.semaforo__form input:focus-visible {
   border-color: var(--c-midnight-aura);
 }
 
@@ -1058,10 +1057,9 @@
   transition: border-color var(--t-fast);
 }
 
-.form input:focus,
-.form textarea:focus,
-.form select:focus {
-  outline: none;
+.form input:focus-visible,
+.form textarea:focus-visible,
+.form select:focus-visible {
   border-color: var(--c-midnight-aura);
 }
 

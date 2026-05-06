@@ -334,10 +334,10 @@
   font-weight: 300;
   font-size: var(--fs-xs);
   letter-spacing: 0.2em;
-  color: var(--c-warm-stone);
+  color: var(--c-off-white);
   text-transform: uppercase;
   margin-top: var(--s-2);
-  opacity: 0.7;
+  opacity: 0.85;
 }
 
 .programa__desc {
@@ -347,7 +347,7 @@
   border-bottom: 1px solid rgba(217, 203, 185, 0.15);
   font-family: var(--f-italic);
   font-style: italic;
-  color: var(--c-warm-stone);
+  color: var(--c-off-white);
   font-size: var(--fs-base);
   line-height: 1.5;
 }
@@ -394,8 +394,8 @@
   font-family: var(--f-italic);
   font-style: italic;
   font-size: var(--fs-base);
-  color: var(--c-warm-stone);
-  opacity: 0.85;
+  color: var(--c-off-white);
+  opacity: 0.95;
   max-width: 720px;
   margin-inline: auto;
 }
