@@ -361,6 +361,23 @@ p {
   animation: chevron-bounce 2s ease-in-out infinite;
 }
 
+.hero .chevron-down {
+  position: absolute;
+  bottom: clamp(1.5rem, 4vh, 3rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+@keyframes chevron-bounce-fixed {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
+  50% { transform: translateX(-50%) translateY(8px); opacity: 1; }
+}
+
+.hero .chevron-down {
+  animation: chevron-bounce-fixed 2s ease-in-out infinite;
+}
+
 .chevron-down svg {
   width: 24px;
   height: 12px;
