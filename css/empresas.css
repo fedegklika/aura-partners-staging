@@ -163,7 +163,6 @@
   letter-spacing: 0.05em;
   color: var(--c-golden-sand);
   margin: var(--s-6) 0 var(--s-8);
-  filter: drop-shadow(0 0 80px rgba(217, 203, 185, 0.25));
 }
 
 .hero__wordmark em {
@@ -575,6 +574,265 @@
   display: flex;
   flex-direction: column;
   transition: all var(--t-base);
+}
+
+/* === EDITORIAL PRICING (premium high-ticket) === */
+
+.planes__lead {
+  font-family: var(--f-italic);
+  font-style: italic;
+  font-size: clamp(var(--fs-base), 1.2vw, var(--fs-lg));
+  color: var(--c-warm-stone);
+  max-width: 640px;
+  margin: var(--s-6) auto 0;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.planes__editorial {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  max-width: 1040px;
+  margin: var(--s-16) auto 0;
+  border-top: 1px solid rgba(217, 203, 185, 0.25);
+  border-bottom: 1px solid rgba(217, 203, 185, 0.25);
+}
+
+@media (max-width: 860px) {
+  .planes__editorial { grid-template-columns: 1fr; }
+}
+
+.plan-editorial {
+  padding: var(--s-12) var(--s-8);
+  border-right: 1px solid rgba(217, 203, 185, 0.18);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 860px) {
+  .plan-editorial { border-right: none; border-bottom: 1px solid rgba(217, 203, 185, 0.18); }
+  .plan-editorial:last-child { border-bottom: none; }
+}
+
+.plan-editorial:last-child { border-right: none; }
+
+.plan-editorial--accent { background: rgba(217, 203, 185, 0.04); }
+
+.plan-editorial__head {
+  margin-bottom: var(--s-6);
+}
+
+.plan-editorial__tag {
+  display: inline-block;
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--c-golden-sand);
+  margin-bottom: var(--s-3);
+}
+
+.plan-editorial__head h3 {
+  font-family: var(--f-italic);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(var(--fs-2xl), 3vw, var(--fs-3xl));
+  color: var(--c-golden-sand);
+  letter-spacing: 0;
+  line-height: 1.1;
+  margin-bottom: var(--s-3);
+}
+
+.plan-editorial__price {
+  font-family: var(--f-body);
+  font-size: var(--fs-base);
+  color: var(--c-warm-stone);
+  letter-spacing: 0.02em;
+}
+
+.plan-editorial__price strong {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: 1.4em;
+  color: var(--c-off-white);
+  letter-spacing: 0.02em;
+}
+
+.plan-editorial__fit {
+  font-family: var(--f-body);
+  font-size: var(--fs-base);
+  line-height: 1.7;
+  color: var(--c-off-white);
+  opacity: 0.9;
+  margin: var(--s-4) 0 var(--s-8);
+}
+
+.plan-editorial__details {
+  display: grid;
+  gap: var(--s-4);
+  margin: 0 0 var(--s-8);
+  padding-top: var(--s-6);
+  border-top: 1px solid rgba(217, 203, 185, 0.15);
+}
+
+.plan-editorial__details > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-1);
+}
+
+.plan-editorial__details dt {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-golden-sand);
+  opacity: 0.95;
+}
+
+.plan-editorial__details dd {
+  font-family: var(--f-body);
+  font-size: var(--fs-sm);
+  line-height: 1.65;
+  color: var(--c-off-white);
+  opacity: 0.85;
+  margin: 0;
+}
+
+.plan-editorial__cta {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-golden-sand);
+  border-bottom: 1px solid var(--c-golden-sand);
+  padding: var(--s-2) 0;
+  align-self: flex-start;
+  transition: gap var(--t-base), opacity var(--t-base);
+}
+
+.plan-editorial__cta:hover {
+  opacity: 0.85;
+  gap: var(--s-3);
+}
+
+/* === CASE STUDIES (proof concreto) === */
+
+.section--casos {
+  background: var(--c-off-white);
+}
+
+.casos__head {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto var(--s-16);
+}
+
+.casos__head h2 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(var(--fs-2xl), 4vw, var(--fs-4xl));
+  line-height: 1.15;
+  color: var(--c-midnight-aura);
+  margin-top: var(--s-3);
+}
+
+.casos__head h2 em {
+  font-family: var(--f-italic);
+  font-style: italic;
+  color: var(--c-mystic-violet);
+}
+
+.casos__lead {
+  font-family: var(--f-italic);
+  font-style: italic;
+  color: var(--c-text-body);
+  opacity: 0.8;
+  margin-top: var(--s-4);
+  max-width: 580px;
+  margin-inline: auto;
+}
+
+.casos__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid rgba(96, 87, 130, 0.18);
+  border-bottom: 1px solid rgba(96, 87, 130, 0.18);
+}
+
+@media (max-width: 900px) {
+  .casos__grid { grid-template-columns: 1fr; }
+}
+
+.caso {
+  padding: var(--s-12) var(--s-8);
+  border-right: 1px solid rgba(96, 87, 130, 0.15);
+}
+
+@media (max-width: 900px) {
+  .caso { border-right: none; border-bottom: 1px solid rgba(96, 87, 130, 0.15); }
+  .caso:last-child { border-bottom: none; }
+}
+
+.caso:last-child { border-right: none; }
+
+.caso__sector {
+  display: inline-block;
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--c-mystic-violet);
+  margin-bottom: var(--s-2);
+}
+
+.caso__meta {
+  font-family: var(--f-body);
+  font-size: var(--fs-sm);
+  color: var(--c-text-body);
+  opacity: 0.75;
+  margin-bottom: var(--s-6);
+  letter-spacing: 0.02em;
+}
+
+.caso__metric {
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: clamp(var(--fs-base), 1.4vw, var(--fs-lg));
+  color: var(--c-midnight-aura);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-top: 1px solid rgba(217, 203, 185, 0.5);
+  border-bottom: 1px solid rgba(217, 203, 185, 0.5);
+  padding: var(--s-6) 0;
+  margin-bottom: var(--s-6);
+}
+
+.caso__metric strong {
+  display: block;
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(var(--fs-3xl), 5vw, var(--fs-5xl));
+  color: var(--c-mystic-violet);
+  letter-spacing: 0;
+  line-height: 1;
+  margin-bottom: var(--s-2);
+}
+
+.caso__detail {
+  font-family: var(--f-body);
+  font-size: var(--fs-base);
+  line-height: 1.7;
+  color: var(--c-text-body);
 }
 
 .plan:hover {
