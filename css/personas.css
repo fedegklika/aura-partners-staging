@@ -1,0 +1,649 @@
+/* ============================================================
+   personas.html — Aura Transformation (B2C Patrimonio)
+   Base: Mystic Violet + Golden Sand acentos + Black titulares
+   IMPORTANTE: este archivo asume que empresas.css ya cargó (vía <link> en HTML).
+   Si renderizás personas.html aislado, agregar <link rel="stylesheet" href="css/empresas.css"> ANTES de personas.css.
+   ============================================================ */
+
+.page-transformation {
+  background: var(--c-white);
+}
+
+/* === HERO TRANSFORMATION (override Advisory) === */
+
+.hero--transformation {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--c-mystic-violet);
+  isolation: isolate;
+  padding-top: 96px;
+}
+
+.hero--transformation .hero__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(96, 87, 130, 0.88) 0%, rgba(34, 32, 58, 0.92) 100%),
+    url('../assets/pages/tram-transformation.jpg') center / cover no-repeat;
+  z-index: -2;
+}
+
+.hero--transformation .hero__sparkle {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: screen;
+  opacity: 0.55;
+  animation: sparkle-pulse-violet 7s ease-in-out infinite;
+}
+
+.hero--transformation .hero__sparkle img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero--transformation .hero__sparkle--top {
+  top: 10%;
+  right: -3%;
+  width: clamp(160px, 24vw, 360px);
+}
+
+@keyframes sparkle-pulse-violet {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50%      { transform: scale(1.08) rotate(3deg); opacity: 0.7; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero--transformation .hero__sparkle { animation: none; }
+}
+
+.hero--transformation .hero__pattern {
+  background-image: url('../assets/textures/cross-pattern-violet.png');
+  background-size: 280px;
+  opacity: 0.1;
+}
+
+/* === MANIFIESTO PERSONAL === */
+
+.section--manifiesto {
+  background: var(--c-off-white);
+  text-align: center;
+}
+
+.section--manifiesto h2 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(var(--fs-2xl), 5vw, var(--fs-4xl));
+  color: var(--c-black);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.section--manifiesto h2 em {
+  font-family: var(--f-italic);
+  font-style: italic;
+  color: var(--c-mystic-violet);
+}
+
+.manifiesto__lead {
+  margin-top: var(--s-6);
+  font-size: clamp(var(--fs-base), 1.5vw, var(--fs-lg));
+  color: var(--c-text-body);
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+.manifiesto__pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-8);
+  margin-top: var(--s-16);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .manifiesto__pillars { grid-template-columns: 1fr; gap: var(--s-6); }
+}
+
+.pillar {
+  padding: var(--s-8) var(--s-4);
+  border-top: 2px solid var(--c-golden-sand);
+}
+
+.pillar h3 {
+  font-family: var(--f-italic);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--fs-3xl);
+  color: var(--c-mystic-violet);
+  margin-bottom: var(--s-4);
+}
+
+.pillar p {
+  font-size: var(--fs-base);
+  line-height: 1.65;
+  color: var(--c-text-body);
+}
+
+/* === EL CAMINO (3 pasos) === */
+
+.section--camino {
+  background: var(--c-white);
+}
+
+.camino__head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto var(--s-16);
+}
+
+.camino__head h2 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(var(--fs-2xl), 5vw, var(--fs-4xl));
+  color: var(--c-black);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.camino__head h2 em {
+  font-family: var(--f-italic);
+  font-style: italic;
+  color: var(--c-mystic-violet);
+}
+
+.camino__head p {
+  margin-top: var(--s-6);
+  font-size: clamp(var(--fs-base), 1.5vw, var(--fs-lg));
+  color: var(--c-text-body);
+}
+
+.camino__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-8);
+}
+
+@media (max-width: 1024px) {
+  .camino__grid { grid-template-columns: 1fr; }
+}
+
+.step {
+  position: relative;
+  padding: var(--s-8);
+  background: var(--c-off-white);
+  border-radius: var(--r-lg);
+  border: 1px solid transparent;
+  transition: all var(--t-base);
+}
+
+.step:hover {
+  border-color: var(--c-golden-sand);
+  box-shadow: var(--sh-md);
+  transform: translateY(-2px);
+}
+
+.step__num {
+  display: inline-block;
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: var(--fs-base);
+  letter-spacing: 0.3em;
+  color: var(--c-golden-sand);
+  background: var(--c-mystic-violet);
+  padding: var(--s-2) var(--s-4);
+  border-radius: var(--r-pill);
+  margin-bottom: var(--s-4);
+}
+
+.step h3 {
+  font-family: var(--f-italic);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--fs-2xl);
+  color: var(--c-mystic-violet);
+  margin-bottom: var(--s-3);
+  line-height: 1.2;
+}
+
+.step p {
+  font-size: var(--fs-base);
+  line-height: 1.65;
+  color: var(--c-text-body);
+  margin-bottom: var(--s-4);
+}
+
+.step ul {
+  list-style: none;
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--c-soft-aura);
+}
+
+.step ul li {
+  position: relative;
+  padding: var(--s-2) 0 var(--s-2) var(--s-6);
+  font-size: var(--fs-sm);
+  color: var(--c-text-body);
+  line-height: 1.5;
+}
+
+.step ul li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--c-mystic-violet);
+}
+
+/* === PROGRAMAS (3 cards en violet, override planes Advisory) === */
+
+.section--programas {
+  background: var(--c-mystic-violet);
+  color: var(--c-off-white);
+  position: relative;
+  isolation: isolate;
+}
+
+.section--programas::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(217, 203, 185, 0.15) 0%, transparent 70%);
+  z-index: -1;
+}
+
+.programas__head {
+  text-align: center;
+  margin-bottom: var(--s-16);
+}
+
+.programas__head h2 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  color: var(--c-golden-sand);
+  letter-spacing: 0.02em;
+}
+
+.programas__head h2 em {
+  font-family: var(--f-italic);
+  font-style: italic;
+  color: var(--c-warm-stone);
+}
+
+.programas__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-6);
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+@media (max-width: 1024px) {
+  .programas__grid { grid-template-columns: 1fr; }
+}
+
+.programa {
+  position: relative;
+  padding: var(--s-8);
+  background: rgba(217, 203, 185, 0.06);
+  border: 1px solid rgba(217, 203, 185, 0.25);
+  border-radius: var(--r-lg);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--t-base);
+}
+
+.programa:hover {
+  border-color: var(--c-golden-sand);
+  transform: translateY(-4px);
+}
+
+.programa--featured {
+  background: linear-gradient(180deg, rgba(217, 203, 185, 0.12) 0%, rgba(217, 203, 185, 0.03) 100%);
+  border-color: var(--c-golden-sand);
+  transform: scale(1.02);
+}
+
+.programa__badge {
+  position: absolute;
+  top: -12px;
+  right: var(--s-6);
+  background: var(--c-golden-sand);
+  color: var(--c-mystic-violet);
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+  font-family: var(--f-display);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.programa h3 {
+  font-family: var(--f-italic);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--fs-2xl);
+  color: var(--c-golden-sand);
+}
+
+.programa__sub {
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.2em;
+  color: var(--c-warm-stone);
+  text-transform: uppercase;
+  margin-top: var(--s-2);
+  opacity: 0.7;
+}
+
+.programa__desc {
+  margin: var(--s-6) 0;
+  padding: var(--s-4) 0;
+  border-top: 1px solid rgba(217, 203, 185, 0.15);
+  border-bottom: 1px solid rgba(217, 203, 185, 0.15);
+  font-family: var(--f-italic);
+  font-style: italic;
+  color: var(--c-warm-stone);
+  font-size: var(--fs-base);
+  line-height: 1.5;
+}
+
+.programa__feat {
+  list-style: none;
+  margin-bottom: var(--s-6);
+  flex: 1;
+}
+
+.programa__feat li {
+  position: relative;
+  padding: var(--s-3) 0 var(--s-3) var(--s-6);
+  border-bottom: 1px solid rgba(217, 203, 185, 0.15);
+  font-size: var(--fs-sm);
+  color: var(--c-off-white);
+  line-height: 1.6;
+}
+
+.programa__feat li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--c-golden-sand);
+  top: var(--s-3);
+}
+
+.programa__feat li:last-child { border-bottom: none; }
+
+.programa .btn-outline-dark {
+  background: transparent;
+  color: var(--c-golden-sand);
+  border-color: var(--c-golden-sand);
+}
+
+.programa .btn-outline-dark:hover {
+  background: var(--c-golden-sand);
+  color: var(--c-mystic-violet);
+}
+
+.programas__note {
+  text-align: center;
+  margin-top: var(--s-12);
+  font-family: var(--f-italic);
+  font-style: italic;
+  font-size: var(--fs-base);
+  color: var(--c-warm-stone);
+  opacity: 0.85;
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.programas__note strong {
+  font-style: normal;
+  color: var(--c-golden-sand);
+}
+
+/* === TESTIMONIO === */
+
+.section--testimonio {
+  background: var(--c-off-white);
+}
+
+.testimonio {
+  padding: clamp(var(--s-12), 8vw, var(--s-24));
+  text-align: center;
+}
+
+.testimonio__quote {
+  font-family: var(--f-italic);
+  font-style: italic;
+  font-size: clamp(var(--fs-lg), 2.5vw, var(--fs-2xl));
+  line-height: 1.5;
+  color: var(--c-mystic-violet);
+  margin-bottom: var(--s-8);
+}
+
+.testimonio__author {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--s-4);
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--c-soft-aura);
+  max-width: 320px;
+  margin-inline: auto;
+}
+
+.testimonio__author strong {
+  display: block;
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--c-text-body);
+}
+
+.testimonio__author span {
+  display: block;
+  font-family: var(--f-italic);
+  font-style: italic;
+  font-size: var(--fs-sm);
+  color: var(--c-soft-aura);
+  margin-top: 2px;
+}
+
+/* === MARY (override prueba__creds) === */
+
+.section--mary {
+  background: var(--c-white);
+}
+
+.mary {
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  gap: clamp(var(--s-8), 5vw, var(--s-16));
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .mary { grid-template-columns: 1fr; }
+}
+
+.mary__photo {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  border-radius: var(--r-md);
+  box-shadow: var(--sh-lg);
+}
+
+.mary__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mary__text h2 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(var(--fs-3xl), 6vw, var(--fs-5xl));
+  line-height: 1;
+  color: var(--c-mystic-violet);
+  letter-spacing: 0.02em;
+}
+
+.mary__text h2 em {
+  font-family: var(--f-italic);
+  font-style: italic;
+  color: var(--c-mystic-violet);
+  letter-spacing: 0;
+}
+
+.mary__text p {
+  margin-bottom: var(--s-4);
+  color: var(--c-text-body);
+}
+
+.mary__credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  margin-top: var(--s-6);
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--c-soft-aura);
+}
+
+.mary__credentials span {
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--c-mystic-violet);
+}
+
+/* === CTA TRANSFORMATION === */
+
+.cta--transformation {
+  background: var(--c-mystic-violet);
+  color: var(--c-off-white);
+  text-align: center;
+  padding-block: clamp(var(--s-16), 12vw, var(--s-32));
+  position: relative;
+  isolation: isolate;
+}
+
+.cta--transformation::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(217, 203, 185, 0.15) 0%, transparent 70%),
+    var(--c-mystic-violet);
+  z-index: -1;
+}
+
+.cta--transformation h2 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  color: var(--c-golden-sand);
+  letter-spacing: 0.02em;
+  margin-bottom: var(--s-4);
+}
+
+.cta--transformation h2 em {
+  font-family: var(--f-italic);
+  font-style: italic;
+  color: var(--c-off-white);
+}
+
+.cta--transformation p {
+  font-size: clamp(var(--fs-base), 1.5vw, var(--fs-lg));
+  margin-bottom: var(--s-8);
+  color: var(--c-off-white);
+  opacity: 0.95;
+}
+
+/* === ESPACIO ABIERTO === */
+
+.section--espacio {
+  position: relative;
+  background: linear-gradient(180deg, var(--c-off-white) 0%, var(--c-white) 100%);
+  text-align: center;
+  overflow: hidden;
+}
+
+.espacio__filigrana {
+  position: absolute;
+  top: 50%;
+  right: -8%;
+  transform: translateY(-50%);
+  width: clamp(280px, 38vw, 540px);
+  pointer-events: none;
+  opacity: 0.12;
+  z-index: 0;
+}
+
+.espacio__filigrana img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.espacio__sparkle {
+  position: absolute;
+  top: 12%;
+  left: -4%;
+  width: clamp(140px, 18vw, 280px);
+  pointer-events: none;
+  opacity: 0.45;
+  z-index: 0;
+  mix-blend-mode: multiply;
+  animation: sparkle-pulse-violet 8s ease-in-out infinite;
+}
+
+.espacio__sparkle img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.section--espacio > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.espacio__title {
+  font-size: clamp(var(--fs-2xl), 4.5vw, var(--fs-4xl));
+  color: var(--c-mystic-violet);
+  margin-top: var(--s-3);
+  letter-spacing: 0.01em;
+}
+
+.espacio__title em {
+  color: var(--c-midnight-aura);
+}
+
+.espacio__lead {
+  font-size: clamp(var(--fs-base), 1.4vw, var(--fs-lg));
+  line-height: 1.85;
+  color: var(--c-text-body);
+  margin-top: var(--s-6);
+}
+
+.espacio__lead--small {
+  font-family: var(--f-italic);
+  font-style: italic;
+  color: var(--c-mystic-violet);
+  margin-top: var(--s-4);
+}
+
+@media (max-width: 768px) {
+  .espacio__filigrana {
+    right: -25%;
+    opacity: 0.08;
+  }
+}
