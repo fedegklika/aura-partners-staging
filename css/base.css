@@ -3,6 +3,9 @@
    Branding oficial de Sasha Birencwajg (extraído del Brand Guideline)
    ============================================================ */
 
+/* @import al INICIO obligatorio (CSS spec: must precede all other rules) */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Spectral:wght@300;400;500;600&display=swap');
+
 /* === FONTS OFICIALES (locales) === */
 
 @font-face {
@@ -55,8 +58,8 @@
 
 /* OPTIMA TTF Mac classic eliminado: bug de kerning Unicode con tildes/Ñ en Chrome.
    Migrado a Cormorant Garamond (Google Fonts, UTF-8 robusto) — la fuente que María pidió
-   originalmente en su V0. Mantiene proporciones editoriales similares a Optima. */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Spectral:wght@300;400;500;600&display=swap');
+   originalmente en su V0. Mantiene proporciones editoriales similares a Optima.
+   El @import de Google Fonts está al tope del archivo (CSS spec). */
 
 /* === DESIGN TOKENS === */
 
@@ -246,6 +249,18 @@ p {
   border-radius: var(--r-pill);
   transition: all var(--t-base);
   cursor: pointer;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.4;
+  max-width: 100%;
+}
+
+@media (max-width: 600px) {
+  .btn {
+    padding: var(--s-3) var(--s-6);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+  }
 }
 
 .btn-primary {
@@ -445,9 +460,12 @@ p {
 .pull-quote {
   padding-block: clamp(5rem, 10vw, 9rem);
   padding-inline: clamp(1.5rem, 5vw, 4rem);
+  position: relative;
+}
+
+.pull-quote > * {
   max-width: 1080px;
   margin-inline: auto;
-  position: relative;
 }
 
 .pull-quote::before {
@@ -476,6 +494,10 @@ p {
   text-wrap: balance;
 }
 
+.pull-quote--dark {
+  background: var(--c-deep-eclipse);
+  color: var(--c-off-white);
+}
 .pull-quote--dark .pull-quote__text { color: var(--c-off-white); }
 .pull-quote--dark::before { color: var(--c-golden-sand); opacity: 0.22; }
 
