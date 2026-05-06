@@ -53,21 +53,10 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Optima';
-  src: url('../fonts/OPTIMA.TTF') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Optima';
-  src: url('../fonts/OPTIMA_B.TTF') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+/* OPTIMA TTF Mac classic eliminado: bug de kerning Unicode con tildes/Ñ en Chrome.
+   Migrado a Cormorant Garamond (Google Fonts, UTF-8 robusto) — la fuente que María pidió
+   originalmente en su V0. Mantiene proporciones editoriales similares a Optima. */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Spectral:wght@300;400;500;600&display=swap');
 
 /* === DESIGN TOKENS === */
 
@@ -93,10 +82,10 @@
   --c-transformation-accent: #D9CBB9;
   --c-paraguas-accent: #D9CBB9;
 
-  /* Fonts */
+  /* Fonts — Cormorant Garamond reemplaza Optima por bug Unicode kerning Chrome */
   --f-display: 'Nicko', 'Archivo Black', 'Inter Black', system-ui, sans-serif;
-  --f-italic: 'AppleGaramond', 'EB Garamond', 'Cormorant Garamond', Georgia, serif;
-  --f-body: 'Optima', 'Spectral', 'PT Serif', 'Lora', Georgia, serif;
+  --f-italic: 'Cormorant Garamond', 'AppleGaramond', 'EB Garamond', Georgia, serif;
+  --f-body: 'Cormorant Garamond', 'Spectral', 'EB Garamond', 'PT Serif', Georgia, serif;
   --f-system: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   /* Spacing scale (Tailwind nativo) */
@@ -159,8 +148,9 @@ html {
 
 body {
   font-family: var(--f-body);
-  font-size: var(--fs-base);
-  line-height: 1.6;
+  font-size: 1.06rem; /* Cormorant Garamond x-height más chica que Optima, compensar */
+  line-height: 1.7;
+  letter-spacing: 0.005em;
   color: var(--c-text-body);
   background: var(--c-white);
   -webkit-font-smoothing: antialiased;
@@ -400,6 +390,153 @@ p {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* === EDITORIAL ASYMMETRIC SYSTEM === */
+
+/* Vertical hairline gold que conecta secciones (decoración fixed) */
+.editorial-rule {
+  position: fixed;
+  top: 12vh;
+  left: clamp(1rem, 4vw, 3rem);
+  width: 1px;
+  height: 60vh;
+  background: linear-gradient(180deg, transparent 0%, var(--c-golden-sand) 30%, var(--c-golden-sand) 70%, transparent 100%);
+  opacity: 0.18;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media (max-width: 1024px) { .editorial-rule { display: none; } }
+
+/* Numbered section markers estilo NYT */
+.section-marker {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: 0.78rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--c-golden-sand);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: var(--s-6);
+  opacity: 0.85;
+}
+
+.section-marker::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--c-golden-sand);
+  opacity: 0.6;
+}
+
+.section-marker__num {
+  font-family: var(--f-italic);
+  font-style: italic;
+  font-size: 1.1rem;
+  letter-spacing: 0;
+  color: var(--c-mystic-violet);
+  font-weight: 400;
+}
+
+/* Pull-quote editorial gigante */
+.pull-quote {
+  padding-block: clamp(5rem, 10vw, 9rem);
+  padding-inline: clamp(1.5rem, 5vw, 4rem);
+  max-width: 1080px;
+  margin-inline: auto;
+  position: relative;
+}
+
+.pull-quote::before {
+  content: '"';
+  position: absolute;
+  top: clamp(2rem, 4vw, 3rem);
+  left: clamp(0rem, 2vw, 2rem);
+  font-family: var(--f-italic);
+  font-style: italic;
+  font-size: clamp(8rem, 14vw, 14rem);
+  line-height: 1;
+  color: var(--c-golden-sand);
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.pull-quote__text {
+  font-family: var(--f-italic);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  line-height: 1.35;
+  color: var(--c-deep-eclipse);
+  letter-spacing: -0.005em;
+  margin: 0 0 var(--s-6);
+  text-wrap: balance;
+}
+
+.pull-quote--dark .pull-quote__text { color: var(--c-off-white); }
+.pull-quote--dark::before { color: var(--c-golden-sand); opacity: 0.22; }
+
+.pull-quote__cite {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--c-mystic-violet);
+  font-style: normal;
+}
+
+.pull-quote--dark .pull-quote__cite { color: var(--c-golden-sand); }
+
+/* Decorative circles (brief metaphor visual) */
+.circle-decor {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--c-golden-sand);
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Reveal stagger (IntersectionObserver) */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* Sticky CTA discreto (post 30% scroll) */
+.sticky-cta {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1.5rem, 3vh, 2.5rem);
+  z-index: 40;
+  padding: 0.8rem 1.4rem;
+  background: var(--c-midnight-aura);
+  color: var(--c-golden-sand);
+  font-family: var(--f-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid rgba(217, 203, 185, 0.4);
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(15, 9, 19, 0.3);
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 400ms ease, transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.sticky-cta.is-visible { opacity: 1; transform: translateX(0); pointer-events: auto; }
+
+.sticky-cta:hover { background: var(--c-deep-eclipse); }
+
+@media (max-width: 600px) {
+  .sticky-cta { right: 0.8rem; bottom: 1rem; padding: 0.7rem 1.1rem; font-size: 0.72rem; }
 }
 
 /* === HERO MINIMALIST (mockup-28/29 oficial) === */
