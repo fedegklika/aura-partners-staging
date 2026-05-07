@@ -1,5 +1,8 @@
+node_modules
+dist
+.astro
 .DS_Store
-Thumbs.db
 *.log
-node_modules/
-dist/
+.vercel
+.netlify
+.cloudflare

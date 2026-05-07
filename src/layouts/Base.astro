@@ -1,0 +1,114 @@
+---
+/**
+ * Base layout — html shell + SceneCanvas global persistente fixed inset:0
+ * + Lenis smooth scroll + GSAP ScrollTrigger sync.
+ * El canvas 3D vive aquí y es persistente a lo largo de TODO el scroll.
+ */
+import '../styles/global.css';
+import SceneCanvas from '../islands/SceneCanvas';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  pathname?: string;
+  withCanvas?: boolean;
+}
+
+const {
+  title = 'Aura Partners — Asesoramiento patrimonial integral',
+  description = 'Asesoramiento financiero estratégico y programas transformacionales. Aura Advisory para empresas y Aura Transformation para personas.',
+  ogImage = '/assets/brand/logos/AURA DORADO-01.png',
+  pathname = '/',
+  withCanvas = true
+} = Astro.props;
+
+const canonical = `https://aura-partners.com${pathname}`;
+---
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#22203A" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/assets/brand/logos/AURA DORADO-01.png" />
+    <link rel="preload" as="font" href="/fonts/NICKO-ExtraBold.otf" type="font/otf" crossorigin />
+    <link rel="preconnect" href="https://api.fontshare.com" />
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+  </head>
+  <body class="has-scene-canvas">
+    <a href="#main" class="skip-link">Saltar al contenido</a>
+
+    {withCanvas && <SceneCanvas client:only="react" />}
+
+    <slot name="header" />
+    <main id="main" class="scene-content">
+      <slot />
+    </main>
+    <slot name="footer" />
+
+    <script>
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!reduced) {
+        // Activar entrance animations solo cuando JS esta listo
+        document.body.classList.add('js-io-active');
+
+        import('lenis').then((LenisModule) => {
+          const Lenis = LenisModule.default;
+          new Lenis({
+            duration: 1.15,
+            easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true,
+            touchMultiplier: 1.4
+          });
+        });
+
+        // IntersectionObserver: mark as visible al entrar viewport
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-visible');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+        document.querySelectorAll('.reveal, [data-reveal]').forEach((el) => io.observe(el));
+
+        // Fallback safety: cualquier elemento que NO se vuelva visible en 5s, marcarlo manualmente
+        setTimeout(() => {
+          document.querySelectorAll('.reveal:not(.is-visible), [data-reveal]:not(.is-visible)').forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight + 200) el.classList.add('is-visible');
+          });
+        }, 5000);
+      } else {
+        document.querySelectorAll('.reveal, [data-reveal]').forEach((el) => el.classList.add('is-visible'));
+      }
+    </script>
+  </body>
+</html>
+
+<style>
+  .has-scene-canvas { background: var(--color-eclipse); }
+  .scene-content {
+    position: relative;
+    z-index: 1;
+    pointer-events: auto;
+  }
+  .scene-content > section {
+    position: relative;
+    z-index: 1;
+  }
+</style>

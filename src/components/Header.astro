@@ -1,0 +1,128 @@
+---
+/**
+ * Header oficial — micro iso left + 3 nav center + CTA outline right.
+ * Match MOCKUP-28 spec.
+ */
+const links = [
+  { href: '#manifiesto', label: 'Manifiesto' },
+  { href: '/empresas',   label: 'Empresas' },
+  { href: '/personas',   label: 'Personas' }
+];
+---
+<header class="nav">
+  <div class="nav__inner container-wide">
+    <a href="/" class="nav__brand" aria-label="Aura Partners — Inicio">
+      <img
+        src="/assets/brand/logos/AURA DORADO-01.png"
+        alt=""
+        width="40"
+        height="40"
+        loading="eager"
+        decoding="async"
+      />
+    </a>
+    <nav class="nav__menu" aria-label="Navegación principal">
+      {links.map(({ href, label }) => (
+        <a href={href}>{label}</a>
+      ))}
+      <a href="#contacto" class="btn btn-outline btn-sm">Contacto</a>
+    </nav>
+    <button class="nav__toggle" aria-label="Abrir menú" aria-controls="mobile-menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav id="mobile-menu" class="nav__mobile" hidden>
+    {links.map(({ href, label }) => <a href={href}>{label}</a>)}
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    backdrop-filter: blur(14px) saturate(140%);
+    background: color-mix(in oklab, var(--color-eclipse) 65%, transparent);
+    border-bottom: 1px solid color-mix(in oklab, var(--color-sand) 8%, transparent);
+  }
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 1rem;
+  }
+  .nav__brand img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+  .nav__menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--color-cream);
+  }
+  .nav__menu a:hover { color: var(--color-sand); }
+  .nav__menu .btn { padding: 0.6rem 1.2rem; font-size: 0.7rem; }
+
+  .nav__toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0.5rem;
+  }
+  .nav__toggle span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--color-sand);
+    transition: transform 240ms var(--ease-aura);
+  }
+
+  .nav__mobile {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--color-eclipse);
+    border-top: 1px solid color-mix(in oklab, var(--color-sand) 14%, transparent);
+  }
+  .nav__mobile a {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--color-cream);
+  }
+
+  @media (max-width: 768px) {
+    .nav__menu { display: none; }
+    .nav__toggle { display: flex; }
+    .nav__mobile:not([hidden]) { display: flex; }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.nav__toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => {
+    if (!menu) return;
+    const open = menu.hidden;
+    menu.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.classList.toggle('is-open', open);
+  });
+  menu?.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).tagName === 'A') {
+      menu.hidden = true;
+      toggle?.setAttribute('aria-expanded', 'false');
+      toggle?.classList.remove('is-open');
+    }
+  });
+</script>

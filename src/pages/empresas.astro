@@ -1,0 +1,146 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const cases = [
+  { kpi: '+18%', label: 'Caja operativa',  detail: 'Importadora B2B 12M USD facturación / 6 meses CFO360' },
+  { kpi: '60d',  label: 'Pago al exterior', detail: 'Calendario protocolo anti-estrés moneda + escalonado' },
+  { kpi: '12m',  label: 'Plan ejecución',   detail: 'Tablero financiero mensual + proyección 12 meses cerrada' }
+];
+---
+<Base
+  title="Aura Advisory — CFO360 para PyMEs argentinas | Aura Partners"
+  description="Dirección financiera fraccional CFO360. Caja, margen y decisiones de inversión bajo control mensual."
+  pathname="/empresas"
+>
+  <Header slot="header" />
+
+  <section class="hero hero--advisory">
+    <div class="hero__atmosphere" aria-hidden="true"></div>
+    <div class="hero__content container-tight" style="text-align:center; padding-top: 6rem;">
+      <span class="eyebrow">Aura Advisory</span>
+      <h1 style="margin-block: 1rem 1.5rem;" data-reveal>
+        Caja, margen y<br/>
+        <em>decisiones de inversión</em><br/>
+        bajo control mensual.
+      </h1>
+      <p data-reveal style="font-size: var(--text-lead); color: var(--color-stone); max-width: 620px; margin-inline: auto;">
+        Dirección financiera fraccional para PyMEs industriales e importadoras B2B argentinas.
+        Sin discurso. Números. Calendario. Decisiones.
+      </p>
+      <div data-reveal style="margin-top: 2.5rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="#agendar" class="btn btn-primary">Agendar diagnóstico</a>
+        <a href="#planes" class="btn btn-outline">Ver planes</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof-strip" data-reveal>
+    <div class="container-wide">
+      <p class="proof-strip__line">
+        Lic. Economía UTDT · Maestría Finanzas Corporativas UdeSA · Asesora CNV · 15+ años Banco Ciudad/Provincia
+      </p>
+    </div>
+  </section>
+
+  <!-- CASOS B2B -->
+  <section class="section" id="casos">
+    <div class="container-wide">
+      <header style="text-align:center; margin-bottom:4rem;" data-reveal>
+        <span class="eyebrow">Resultados reales</span>
+        <h2 style="margin-top:1rem;">Tres números que <em>cambian la conversación</em>.</h2>
+      </header>
+      <div class="casos-grid">
+        {cases.map(c => (
+          <article class="caso reveal">
+            <div class="caso__kpi">{c.kpi}</div>
+            <div class="caso__label">{c.label}</div>
+            <p class="caso__detail">{c.detail}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING editorial NYT-style -->
+  <section class="section" id="planes" style="background: var(--color-midnight);">
+    <div class="container-wide">
+      <header style="text-align:center; margin-bottom:4rem;" data-reveal>
+        <span class="eyebrow">Planes</span>
+        <h2 style="margin-top:1rem;">Acompañamiento <em>sostenido</em>, no consultoría puntual.</h2>
+      </header>
+      <div class="planes-grid">
+        <article class="plan reveal">
+          <h3>CFO360 Mini</h3>
+          <p class="plan__price">USD 990<small>/mes</small></p>
+          <dl>
+            <dt>1 reunión mensual</dt><dd>Tablero financiero entregado</dd>
+            <dt>Proyección 6 meses</dt><dd>Caja operativa + comprometida + excedente</dd>
+            <dt>Soporte WhatsApp</dt><dd>Respuesta &lt; 48h hábiles</dd>
+          </dl>
+          <a href="#agendar" class="btn btn-outline" style="margin-top:1.5rem;">Empezar</a>
+        </article>
+        <article class="plan plan--featured reveal">
+          <span class="plan__tag">Recomendado</span>
+          <h3>CFO360 Pro</h3>
+          <p class="plan__price">USD 1.490<small>/mes</small></p>
+          <dl>
+            <dt>2 reuniones mensuales</dt><dd>Estrategia + tablero ejecutivo</dd>
+            <dt>Proyección 12 meses</dt><dd>Escenarios + sensibilidad cambiaria</dd>
+            <dt>Acompañamiento decisiones</dt><dd>Pagos exterior + inversión excedentes</dd>
+            <dt>Soporte WhatsApp prioritario</dt><dd>Respuesta &lt; 24h</dd>
+          </dl>
+          <a href="#agendar" class="btn btn-primary" style="margin-top:1.5rem;">Empezar</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="agendar" class="cta">
+    <div class="container-tight" style="text-align:center; padding-block: 5rem;">
+      <span class="eyebrow" data-reveal>Agendar</span>
+      <h2 data-reveal style="margin-block:1.5rem;">Diagnóstico gratuito de 30 minutos.</h2>
+      <p data-reveal style="color: var(--color-stone); font-size: var(--text-lead);">
+        Llevá tu última proyección de caja, vencimientos próximos y la decisión financiera más difícil del mes.
+      </p>
+      <div data-reveal style="margin-top:2rem;">
+        <a href="https://wa.me/5491167168658" target="_blank" rel="noopener" class="btn btn-primary">WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
+
+<style>
+  .hero--advisory {
+    background:
+      radial-gradient(ellipse at 30% 20%, color-mix(in oklab, var(--color-violet) 40%, transparent), transparent 60%),
+      radial-gradient(ellipse at 70% 80%, color-mix(in oklab, var(--color-midnight) 70%, transparent), transparent 60%),
+      var(--color-eclipse);
+    min-height: 80svh;
+  }
+  .hero__atmosphere { position:absolute; inset:0; background: url('/assets/brand/atmospheres/IMAGENES-02.png') center/cover; opacity:.4; mix-blend-mode: screen; }
+  .casos-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .caso { padding: 2.5rem 2rem; background: color-mix(in oklab, var(--color-midnight) 50%, transparent); border:1px solid color-mix(in oklab, var(--color-sand) 12%, transparent); border-radius: 8px; }
+  .caso__kpi { font-family: var(--font-nicko); font-size: clamp(3rem, 6vw, 5.5rem); color: var(--color-sand); font-weight: 800; line-height:1; }
+  .caso__label { font-family: var(--font-display); font-style: italic; font-size: 1.25rem; color: var(--color-cream); margin-block: 0.5rem 1rem; }
+  .caso__detail { color: var(--color-stone); font-size: 0.95rem; }
+  @media (max-width: 768px) { .casos-grid { grid-template-columns: 1fr; } }
+
+  .planes-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 920px; margin-inline: auto; }
+  .plan { padding: 2.5rem 2rem; border:1px solid color-mix(in oklab, var(--color-sand) 14%, transparent); border-radius: 8px; position: relative; }
+  .plan h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+  .plan__price { font-family: var(--font-nicko); font-size: 2.4rem; color: var(--color-sand); margin-bottom: 1.5rem; line-height:1; }
+  .plan__price small { font-family: var(--font-body); font-size: 0.85rem; color: var(--color-aura); margin-left: 0.4rem; }
+  .plan dl { display:grid; grid-template-columns: max-content 1fr; gap: 0.5rem 1rem; font-size: 0.9rem; }
+  .plan dt { color: var(--color-cream); font-weight: 600; }
+  .plan dd { color: var(--color-stone); }
+  .plan--featured { background: color-mix(in oklab, var(--color-eclipse) 70%, var(--color-violet)); border-color: var(--color-sand); }
+  .plan__tag { position:absolute; top:1rem; right:1rem; padding: 0.3rem 0.8rem; background: var(--color-sand); color: var(--color-eclipse); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; border-radius: 999px; }
+  @media (max-width: 768px) { .planes-grid { grid-template-columns: 1fr; } }
+
+  .cta { background: radial-gradient(ellipse at center, color-mix(in oklab, var(--color-midnight) 50%, transparent), transparent 70%), var(--color-eclipse); }
+</style>

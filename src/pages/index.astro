@@ -1,0 +1,446 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<Base
+  title="Aura Partners — Asesoramiento patrimonial integral"
+  description="Asesoramiento financiero estratégico y programas transformacionales. Aura Advisory para empresas. Aura Transformation para personas."
+  pathname="/"
+>
+  <Header slot="header" />
+
+  <!-- BEAT 1 — HERO (canvas behind, minimal text) -->
+  <section class="beat beat--hero">
+    <div class="beat__inner">
+      <span class="eyebrow eyebrow--centered" data-reveal>Aura Partners</span>
+      <p class="hero__tagline" data-reveal>
+        <em>Asesoramiento patrimonial integral.</em>
+      </p>
+    </div>
+    <a href="#beat-2" class="chevron" aria-label="Continuar">
+      <svg width="32" height="14" viewBox="0 0 24 12" fill="none">
+        <path d="M2 2L12 10L22 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </a>
+  </section>
+
+  <!-- BEAT 2 — OUTCOME (lots of breathing) -->
+  <section class="beat beat--outcome" id="beat-2">
+    <div class="beat__inner">
+      <span class="eyebrow eyebrow--centered reveal">Para empresas y personas</span>
+      <h2 class="display-mark reveal">
+        Decisiones patrimoniales con<br/>
+        <em>rigor financiero</em><br/>
+        y cercanía humana.
+      </h2>
+      <p class="lead reveal">
+        Acompañamos a PyMEs argentinas y profesionales independientes a ordenar su
+        patrimonio, planificar su crecimiento y tomar decisiones financieras con
+        respaldo técnico real. <em>No discursos.</em> Números, criterio, compromiso.
+      </p>
+      <div class="cta-pair reveal">
+        <a href="/empresas" class="btn btn-primary">Servicios para empresas</a>
+        <a href="/personas" class="btn btn-outline">Servicios para personas</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEAT 3 — Pull quote editorial -->
+  <section class="beat beat--quote">
+    <div class="beat__inner narrow">
+      <p class="pull-quote-text reveal">
+        Cada decisión patrimonial es una <em>conversación con el futuro.</em>
+        Acompañamos esa conversación con números claros y criterio sostenido.
+      </p>
+      <span class="pull-quote-cite reveal">María Quartino · Fundadora</span>
+    </div>
+  </section>
+
+  <!-- BEAT 4 — Manifesto (split copy + atmosphere visible behind) -->
+  <section class="beat beat--manifesto" id="manifiesto">
+    <div class="beat__inner">
+      <span class="eyebrow reveal">Manifiesto</span>
+      <h2 class="display-mark reveal">
+        Tendemos un puente entre las<br/>
+        <em>finanzas y el crecimiento personal.</em>
+      </h2>
+      <p class="lead reveal">
+        Acompañamos a personas y empresas a crear no solo riqueza, sino también
+        <em>armonía y propósito</em> en su camino financiero. No somos solo asesores:
+        somos compañeros, transformando tu relación con el dinero.
+      </p>
+    </div>
+  </section>
+
+  <!-- BEAT 5 — Split sub-marcas -->
+  <section class="beat beat--split">
+    <a href="/empresas" id="empresas" class="lane lane--advisory reveal">
+      <span class="eyebrow">Para empresas</span>
+      <h3 class="lane__title">Aura<br/><em>Advisory</em></h3>
+      <p class="lane__lead">Dirección financiera fraccional. CFO360 con visión estratégica.</p>
+      <span class="lane__cta">Conocer Advisory →</span>
+    </a>
+    <a href="/personas" id="personas" class="lane lane--transformation reveal">
+      <span class="eyebrow">Para personas</span>
+      <h3 class="lane__title">Aura<br/><em>Transformation</em></h3>
+      <p class="lane__lead">Asesoramiento patrimonial integral con coaching ICF. <em>Mente, cuerpo, espíritu.</em></p>
+      <span class="lane__cta">Conocer Transformation →</span>
+    </a>
+  </section>
+
+  <!-- BEAT 6 — Pilares -->
+  <section class="beat beat--pillars">
+    <div class="beat__inner">
+      <header class="pillars__head reveal">
+        <span class="eyebrow eyebrow--centered">Cómo trabajamos</span>
+        <h2 class="display-mark"><em>Tres pilares</em><br/>que sostienen el acompañamiento.</h2>
+      </header>
+      <div class="pillars__grid">
+        <article class="pillar reveal">
+          <span class="pillar__num">01</span>
+          <h3>Empatía</h3>
+          <p>Escuchamos antes de proponer. Cada decisión financiera es profundamente emocional, y tratamos lo que te pasa como lo que es: humano.</p>
+        </article>
+        <article class="pillar reveal">
+          <span class="pillar__num">02</span>
+          <h3>Honestidad</h3>
+          <p>Decimos lo que vemos, pensamos y recomendamos. Sin discursos mágicos, sin manipulaciones. Justicia financiera.</p>
+        </article>
+        <article class="pillar reveal">
+          <span class="pillar__num">03</span>
+          <h3>Profesionalismo</h3>
+          <p>Lic. Economía UTDT, Maestría Finanzas UdeSA, ex Banco Ciudad / Provincia, ICF Coach, asesora CNV.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEAT 7 — Mary (foto integrada con atmosphere, NO rectangular bloque) -->
+  <section class="beat beat--mary">
+    <div class="beat__inner mary">
+      <figure class="mary__portrait reveal">
+        <div class="mary__halo" aria-hidden="true"></div>
+        <img
+          src="/assets/maria-blazer-rosa.jpg"
+          alt="María Quartino, fundadora de Aura Partners"
+          loading="lazy"
+          width="2000"
+          height="3000"
+        />
+      </figure>
+      <div class="mary__text">
+        <span class="eyebrow reveal">Quién está detrás</span>
+        <h2 class="display-mark reveal">María<br/><em>Quartino.</em></h2>
+        <p class="lead reveal">
+          Más de quince años acompañando empresas y personas en sus decisiones
+          patrimoniales. Soy economista de formación clásica y coach certificada
+          por ICF: fundé Aura Partners convencida de que las finanzas son tan
+          <em>emocionales</em> como técnicas, y que merecen un abordaje integral.
+        </p>
+        <ul class="mary__creds reveal">
+          <li>Lic. Economía · UTDT</li>
+          <li>Maestría Finanzas · UdeSA</li>
+          <li>ICF Coach · Asesora CNV</li>
+          <li>15+ años en Banco Ciudad y Banco Provincia</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEAT 8 — CTA Final -->
+  <section id="contacto" class="beat beat--cta">
+    <div class="beat__inner narrow">
+      <span class="eyebrow eyebrow--centered reveal">Empezar</span>
+      <h2 class="display-mark reveal">¿Querés que <em>conversemos?</em></h2>
+      <p class="lead reveal">
+        Reservá una llamada de presentación, sin costo. Definimos juntos si tu
+        camino va por Advisory, Transformation, o un híbrido a tu medida.
+      </p>
+      <div class="cta-pair reveal">
+        <a href="/empresas#agendar" class="btn btn-primary">Agendar (Empresas)</a>
+        <a href="/personas#agendar" class="btn btn-outline">Agendar (Personas)</a>
+      </div>
+      <p class="cta-whatsapp reveal">
+        ¿Preferís WhatsApp?
+        <a href="https://wa.me/5491167168658" target="_blank" rel="noopener">+54 9 11 6716 8658</a>
+      </p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
+
+<style>
+  /* ============================================================
+     BEAT system — generous whitespace, minimalist, canvas-aware
+     ============================================================ */
+  .beat {
+    position: relative;
+    padding-block: clamp(7rem, 16vh, 12rem);
+    padding-inline: 1.5rem;
+  }
+  .beat__inner {
+    position: relative;
+    max-width: 1180px;
+    margin-inline: auto;
+    text-align: center;
+    z-index: 2;
+  }
+  .beat__inner.narrow { max-width: 780px; }
+
+  /* HERO: full viewport */
+  .beat--hero {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: 0;
+  }
+  .hero__tagline {
+    margin-top: 65vh;
+    font-family: var(--font-display);
+    font-size: var(--text-lead);
+    color: var(--color-stone);
+    letter-spacing: 0.01em;
+  }
+
+  .chevron {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-sand);
+    opacity: 0.6;
+    z-index: 3;
+    animation: pulse-chevron 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse-chevron {
+    0%, 100% { transform: translate(-50%, 0); opacity: 0.5; }
+    50%      { transform: translate(-50%, 8px); opacity: 0.9; }
+  }
+  @media (prefers-reduced-motion: reduce) { .chevron { animation: none; } }
+
+  /* Display headlines — Zodiak con MUCHO breathing */
+  .display-mark {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw + 1rem, 4.4rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.012em;
+    color: var(--color-cream);
+    text-wrap: balance;
+    margin-block: 2.5rem 2rem;
+  }
+  .display-mark em {
+    font-weight: 400;
+    color: var(--color-sand);
+    font-style: italic;
+  }
+
+  .lead {
+    max-width: 620px;
+    margin-inline: auto;
+    font-size: var(--text-lead);
+    line-height: 1.65;
+    color: var(--color-stone);
+    text-wrap: pretty;
+  }
+  .lead em { color: var(--color-cream); font-style: italic; }
+
+  .eyebrow--centered { display: inline-block; margin-bottom: 1rem; }
+
+  .cta-pair {
+    margin-top: 3.5rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-whatsapp {
+    margin-top: 2.5rem;
+    color: var(--color-stone);
+    font-family: var(--font-display);
+    font-style: italic;
+  }
+  .cta-whatsapp a { color: var(--color-sand); margin-left: 0.5rem; }
+
+  /* QUOTE editorial — translucent, canvas visible behind */
+  .beat--quote {
+    padding-block: clamp(8rem, 18vh, 14rem);
+  }
+  .pull-quote-text {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.5rem, 2.4vw + 0.5rem, 2.6rem);
+    line-height: 1.35;
+    color: var(--color-cream);
+    text-wrap: balance;
+  }
+  .pull-quote-text em {
+    color: var(--color-sand);
+    font-weight: 400;
+  }
+  .pull-quote-cite {
+    display: block;
+    margin-top: 2rem;
+    font-family: var(--font-body);
+    font-size: var(--text-eyebrow);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-stone);
+  }
+
+  /* MANIFIESTO — text-driven, NO foto stock */
+  .beat--manifesto .beat__inner { max-width: 880px; }
+
+  /* SPLIT — 2 lanes side by side */
+  .beat--split {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80svh;
+    margin-block: clamp(3rem, 8vh, 6rem);
+  }
+  .lane {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: clamp(3rem, 8vw, 6rem);
+    color: var(--color-cream);
+    transition: background 600ms var(--ease-aura);
+  }
+  .lane--advisory {
+    background: linear-gradient(160deg,
+      color-mix(in oklab, var(--color-midnight) 85%, transparent) 0%,
+      color-mix(in oklab, var(--color-eclipse) 60%, transparent) 100%);
+  }
+  .lane--transformation {
+    background: linear-gradient(160deg,
+      color-mix(in oklab, var(--color-violet) 75%, transparent) 0%,
+      color-mix(in oklab, var(--color-eclipse) 60%, transparent) 100%);
+  }
+  .lane:hover { transform: translateY(-4px); }
+  .lane__title {
+    font-size: clamp(2.5rem, 4vw + 1rem, 4.5rem);
+    line-height: 1;
+    margin-block: 1.5rem 1.5rem;
+  }
+  .lane__lead {
+    color: var(--color-stone);
+    margin-bottom: 2.5rem;
+    max-width: 380px;
+  }
+  .lane__cta {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--color-sand);
+    padding-top: 1rem;
+    border-top: 1px solid color-mix(in oklab, var(--color-sand) 30%, transparent);
+    align-self: flex-start;
+  }
+  @media (max-width: 768px) {
+    .beat--split { grid-template-columns: 1fr; }
+  }
+
+  /* PILLARS */
+  .pillars__head { margin-bottom: 5rem; }
+  .pillars__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    text-align: left;
+  }
+  .pillar {
+    padding-block: 2rem;
+    padding-inline: 0;
+  }
+  .pillar__num {
+    display: block;
+    font-family: var(--font-nicko);
+    font-size: 3.5rem;
+    color: var(--color-sand);
+    opacity: 0.45;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+  .pillar h3 { font-size: var(--text-h3); margin-bottom: 1rem; }
+  .pillar p { color: var(--color-stone); font-size: 0.98rem; line-height: 1.6; }
+  @media (max-width: 768px) { .pillars__grid { grid-template-columns: 1fr; gap: 3rem; } }
+
+  /* MARY — portrait con halo dorado atmospherico, NO rectangular bloque */
+  .mary {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 5rem;
+    align-items: center;
+    text-align: left;
+  }
+  .mary__portrait {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 4 / 5;
+    justify-self: end;
+    overflow: visible;
+  }
+  .mary__halo {
+    position: absolute;
+    inset: -22%;
+    background:
+      radial-gradient(ellipse at center,
+        color-mix(in oklab, var(--color-sand) 28%, transparent) 0%,
+        color-mix(in oklab, var(--color-violet) 18%, transparent) 35%,
+        transparent 75%);
+    filter: blur(40px);
+    pointer-events: none;
+    animation: aura-breathe 7s ease-in-out infinite;
+  }
+  @keyframes aura-breathe {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50%      { opacity: 1;   transform: scale(1.05); }
+  }
+  @media (prefers-reduced-motion: reduce) { .mary__halo { animation: none; } }
+
+  .mary__portrait img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    filter: contrast(1.02) saturate(0.98);
+    transition: filter 800ms var(--ease-aura);
+    box-shadow:
+      0 30px 80px color-mix(in oklab, var(--color-eclipse) 90%, transparent),
+      0 0 0 1px color-mix(in oklab, var(--color-sand) 28%, transparent);
+  }
+  .mary__portrait:hover img {
+    filter: contrast(1.05) saturate(1.05) brightness(1.04);
+  }
+  .mary__text { max-width: 540px; }
+  .mary__creds {
+    margin-top: 2rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    color: var(--color-aura);
+    border-top: 1px solid color-mix(in oklab, var(--color-sand) 14%, transparent);
+    padding-top: 1.5rem;
+  }
+  @media (max-width: 768px) {
+    .mary { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+    .mary__portrait { justify-self: center; max-width: 320px; }
+    .mary__text { margin-inline: auto; }
+    .mary__creds { align-items: center; border-top: none; padding-top: 0; }
+  }
+</style>

@@ -1,0 +1,89 @@
+---
+/**
+ * Footer minimal — wordmark gold + 3 cols (servicios, contacto, legal).
+ */
+---
+<footer class="footer">
+  <div class="footer__inner container-wide">
+    <div class="footer__brand">
+      <img
+        src="/assets/logos/oficial/wordmark-gold.png"
+        alt="Aura Partners"
+        width="180"
+        height="56"
+        loading="lazy"
+        decoding="async"
+      />
+      <p>Bienestar financiero integral.<br/>Buenos Aires, Argentina.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="/empresas">Aura Advisory</a></li>
+        <li><a href="/personas">Aura Transformation</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="mailto:mquartino@aura-partners.com">mquartino@aura-partners.com</a></li>
+        <li><a href="https://wa.me/5491167168658" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="https://instagram.com/maryquartino" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom container-wide">
+    <small>© 2026 Aura Partners. Todos los derechos reservados.</small>
+    <small>Acompañando tu camino financiero.</small>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-ink);
+    color: var(--color-cream);
+    padding-block: 4rem 2rem;
+    border-top: 1px solid color-mix(in oklab, var(--color-sand) 8%, transparent);
+  }
+  .footer__inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+  .footer__brand img {
+    width: clamp(140px, 18vw, 200px);
+    height: auto;
+    margin-bottom: 1rem;
+  }
+  .footer__brand p {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-stone);
+    line-height: 1.5;
+    max-width: 360px;
+  }
+  .footer__col h4 {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--color-sand);
+    margin-bottom: 1rem;
+  }
+  .footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .footer__col a:hover { color: var(--color-sand); }
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2rem;
+    border-top: 1px solid color-mix(in oklab, var(--color-sand) 8%, transparent);
+    font-size: 0.75rem;
+    color: var(--color-aura);
+  }
+  @media (max-width: 768px) {
+    .footer__inner { grid-template-columns: 1fr; gap: 2rem; }
+    .footer__bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>

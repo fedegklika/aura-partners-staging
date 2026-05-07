@@ -1,0 +1,35 @@
+{
+  "name": "aura-partners",
+  "type": "module",
+  "version": "0.7.0",
+  "private": true,
+  "description": "Aura Partners — premium financial advisory web (Astro 6 + R3F + GSAP)",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "typecheck": "astro check"
+  },
+  "dependencies": {
+    "astro": "^6.3.1",
+    "@astrojs/react": "^5.0.4",
+    "@astrojs/check": "^0.9.9",
+    "@tailwindcss/vite": "^4.2.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwindcss": "^4.2.4",
+    "three": "^0.184.0",
+    "@react-three/fiber": "^9.6.1",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/postprocessing": "^3.0.4",
+    "postprocessing": "^6.36.5",
+    "gsap": "^3.13.0",
+    "lenis": "^1.1.18",
+    "typescript": "^5.6.3"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@types/three": "^0.184.0"
+  }
+}

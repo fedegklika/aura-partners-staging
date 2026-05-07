@@ -1,0 +1,249 @@
+/* ============================================================
+   Aura Partners — Global styles (Astro 6 + Tailwind v4)
+   Brand guideline oficial Sasha Birencwajg
+   ============================================================ */
+
+/* Fontshare — Satoshi (body) + Zodiak (display italic) */
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&f[]=zodiak@300,400,500,600,700&display=swap');
+
+/* Tailwind v4 native */
+@import "tailwindcss";
+
+/* Local fonts oficiales del brand kit */
+@font-face {
+  font-family: 'Nicko';
+  src: url('/fonts/NICKO-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('/fonts/AppleGaramond-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ============================================================
+   THEME TOKENS — Tailwind v4 CSS-first config
+   ============================================================ */
+@theme {
+  /* Paleta oficial 7 colores brand guideline */
+  --color-midnight: #253458;
+  --color-eclipse:  #22203A;
+  --color-violet:   #605782;
+  --color-stone:    #B1AA9F;
+  --color-sand:     #D9CBB9;
+  --color-aura:     #9D9AA1;
+  --color-ink:      #0F0913;
+  --color-cream:    #FAFAF7;
+
+  /* Typefaces */
+  --font-display: "Zodiak", "Apple Garamond", Georgia, serif;
+  --font-body:    "Satoshi", -apple-system, "BlinkMacSystemFont", "Segoe UI", sans-serif;
+  --font-nicko:   "Nicko", "Archivo Black", system-ui, sans-serif;
+
+  /* Fluid type scale */
+  --text-eyebrow:  0.75rem;
+  --text-body:     clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-lead:     clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
+  --text-h3:       clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
+  --text-h2:       clamp(2rem, 1.4rem + 2.8vw, 3.75rem);
+  --text-h1:       clamp(2.5rem, 1.4rem + 4.6vw, 5.5rem);
+  --text-mega:     clamp(4rem, 2rem + 9vw, 11rem);
+
+  /* Easing */
+  --ease-aura: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Shadows */
+  --shadow-sand-glow:    0 0 80px rgba(217, 203, 185, 0.25);
+  --shadow-elev-premium: 0 24px 80px rgba(217, 203, 185, 0.18), 0 8px 24px rgba(96, 87, 130, 0.08);
+
+  /* Radii */
+  --radius-pill: 999px;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  background: var(--color-eclipse);
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.65;
+  color: var(--color-cream);
+  background: var(--color-eclipse);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100svh;
+  font-feature-settings: 'kern', 'liga', 'calt';
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--color-cream);
+  text-wrap: balance;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+}
+h1 { font-size: var(--text-h1); }
+h2 { font-size: var(--text-h2); }
+h3 { font-size: var(--text-h3); }
+
+em, i {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+}
+
+img, svg, video { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; transition: color 200ms var(--ease-aura); }
+button { background: none; border: 0; font: inherit; color: inherit; cursor: pointer; }
+
+::selection { background: var(--color-sand); color: var(--color-eclipse); }
+
+.skip-link {
+  position: absolute; top: -40px; left: 0;
+  padding: 0.5rem 1rem;
+  background: var(--color-sand); color: var(--color-eclipse);
+  z-index: 1000;
+}
+.skip-link:focus { top: 0; }
+
+:focus-visible {
+  outline: 2px solid var(--color-sand);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ============================================================
+   COMPONENTS
+   ============================================================ */
+.container-tight { max-width: 720px; margin-inline: auto; padding-inline: 1.5rem; }
+.container-wide  { max-width: 1280px; margin-inline: auto; padding-inline: 1.5rem; }
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--text-eyebrow);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--color-sand);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  transition: all 300ms var(--ease-aura);
+  cursor: pointer;
+  text-align: center;
+  white-space: normal;
+}
+.btn-primary { background: var(--color-sand); color: var(--color-eclipse); }
+.btn-primary:hover { background: var(--color-stone); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(217, 203, 185, 0.25); }
+.btn-outline { background: transparent; color: var(--color-sand); border-color: currentColor; }
+.btn-outline:hover { background: var(--color-sand); color: var(--color-eclipse); }
+
+.section { padding-block: clamp(4rem, 10vw, 8rem); }
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--color-eclipse);
+}
+
+.hero__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  pointer-events: none;
+}
+
+.pull-quote {
+  position: relative;
+  padding-block: clamp(4rem, 10vw, 7rem);
+  padding-inline: 1.5rem;
+  text-align: center;
+}
+.pull-quote__text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: var(--text-h2);
+  color: var(--color-cream);
+  text-wrap: balance;
+  max-width: 840px;
+  margin: 0 auto;
+  line-height: 1.15;
+}
+.pull-quote__cite {
+  display: block;
+  margin-top: 1.5rem;
+  font-family: var(--font-body);
+  font-size: var(--text-eyebrow);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--color-stone);
+}
+.pull-quote::before {
+  content: "\201C";
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 22vw, 18rem);
+  line-height: 1;
+  top: 0; left: 50%;
+  transform: translate(-50%, -10%);
+  color: var(--color-sand);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Reveal helper — visible always. Optional entrance animation only when scrolled-into-view. */
+.reveal { opacity: 1; transform: none; transition: opacity 700ms var(--ease-aura), transform 700ms var(--ease-aura); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

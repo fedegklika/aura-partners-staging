@@ -1,0 +1,160 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const programs = [
+  {
+    num: '01',
+    title: 'Diagnóstico Patrimonial',
+    duration: '2 sesiones · 90 min c/u',
+    desc: 'Mapeo completo: ingresos, gastos, ahorros, inversiones, deudas, objetivos. Salida: tu fotografía financiera honesta.'
+  },
+  {
+    num: '02',
+    title: 'Plan de Inversión Personal',
+    duration: '4 sesiones · 60 min c/u',
+    desc: 'Diseñamos tu cartera por horizonte y perfil. Conservador, balanceado o crecimiento. Argentina y exterior.'
+  },
+  {
+    num: '03',
+    title: 'Acompañamiento Anual',
+    duration: 'Mensual · 60 min',
+    desc: 'Revisión continua, ajustes, decisiones bajo presión real. Coaching financiero ICF — mente, cuerpo y espíritu.'
+  }
+];
+---
+<Base
+  title="Aura Transformation — Tu patrimonio ordenado, tu vida en paz | Aura Partners"
+  description="Asesoramiento patrimonial integral con coaching financiero ICF. Programas de transformación para profesionales independientes y familias."
+  pathname="/personas"
+>
+  <Header slot="header" />
+
+  <section class="hero hero--transformation">
+    <div class="hero__atmosphere" aria-hidden="true"></div>
+    <img class="hero__sparkle" src="/assets/brand/sparkles/ILUSTRACIONES-03.png" alt="" aria-hidden="true" />
+    <div class="hero__content container-tight" style="text-align:center; padding-top:6rem;">
+      <span class="eyebrow">Aura Transformation</span>
+      <h1 style="margin-block:1rem 1.5rem;" data-reveal>
+        Tu patrimonio <em>ordenado</em>,<br/>
+        tu vida en paz.
+      </h1>
+      <p data-reveal style="font-size: var(--text-lead); color: var(--color-stone); max-width: 620px; margin-inline: auto;">
+        Las finanzas son tan emocionales como técnicas. Acompañamos tu camino con
+        rigor patrimonial y coaching certificado ICF — para que el dinero deje de
+        ser un problema y se vuelva tu herramienta de transformación.
+      </p>
+      <div data-reveal style="margin-top: 2.5rem;">
+        <a href="#agendar" class="btn btn-primary">Agendar primera sesión</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFIESTO espiritual integrado -->
+  <section class="section" id="manifiesto">
+    <div class="container-tight" style="text-align:center;">
+      <span class="eyebrow" data-reveal>Nuestro enfoque</span>
+      <h2 data-reveal style="margin-block:1.5rem;">
+        El dinero es <em>energía,<br/>intención y herramienta</em><br/>de transformación.
+      </h2>
+      <p data-reveal style="font-size: var(--text-lead); color: var(--color-stone); max-width: 720px; margin-inline:auto;">
+        Acompañamos a personas y familias a crear no solo riqueza, sino también armonía y propósito.
+        Cada decisión patrimonial es una conversación con tu futuro: la abordamos con números claros,
+        criterio sostenido y la cercanía humana que esta etapa de tu vida merece.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROGRAMAS -->
+  <section class="section section--programs" style="background: color-mix(in oklab, var(--color-eclipse) 90%, var(--color-violet));">
+    <div class="container-wide">
+      <header style="text-align:center; margin-bottom:4rem;" data-reveal>
+        <span class="eyebrow">Programas</span>
+        <h2 style="margin-top:1rem;">Tres caminos. <em>Un acompañamiento.</em></h2>
+      </header>
+      <div class="programs-grid">
+        {programs.map(p => (
+          <article class="program reveal">
+            <div class="program__num">{p.num}</div>
+            <h3>{p.title}</h3>
+            <span class="program__duration">{p.duration}</span>
+            <p>{p.desc}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- MARY photo -->
+  <section class="section section--mary">
+    <div class="container-wide mary">
+      <figure class="mary__photo reveal">
+        <img src="/assets/maria-camisa-blanca.jpg" alt="María Quartino, fundadora de Aura Partners" loading="lazy" width="2000" height="3000" />
+      </figure>
+      <div class="mary__text">
+        <span class="eyebrow reveal">Tu acompañante</span>
+        <h2 class="reveal" style="margin-block:1rem 1.5rem;">María<br/><em>Quartino.</em></h2>
+        <p class="reveal" style="color: var(--color-stone); font-size: var(--text-lead);">
+          Lic. Economía UTDT. Maestría en Finanzas Corporativas UdeSA. Coach certificada ICF.
+          Ex Banco Ciudad y Provincia. Asesora CNV. Más de quince años en la intersección
+          entre lo financiero y lo emocional.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="agendar" class="cta">
+    <div class="container-tight" style="text-align:center; padding-block:5rem;">
+      <span class="eyebrow" data-reveal>Empezar</span>
+      <h2 data-reveal style="margin-block:1.5rem;">Sesión de presentación, sin costo.</h2>
+      <p data-reveal style="color: var(--color-stone); font-size: var(--text-lead);">
+        30 minutos para conocernos. Vos contás dónde estás, yo te muestro el camino.
+      </p>
+      <div data-reveal style="margin-top:2rem;">
+        <a href="https://wa.me/5491167168658" target="_blank" rel="noopener" class="btn btn-primary">WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
+
+<style>
+  .hero--transformation {
+    background:
+      radial-gradient(ellipse at 70% 30%, color-mix(in oklab, var(--color-violet) 50%, transparent), transparent 60%),
+      radial-gradient(ellipse at 20% 80%, color-mix(in oklab, var(--color-midnight) 60%, transparent), transparent 60%),
+      var(--color-eclipse);
+    min-height: 80svh;
+  }
+  .hero__atmosphere { position:absolute; inset:0; background: url('/assets/brand/atmospheres/IMAGENES-01.png') center/cover; opacity:.45; mix-blend-mode: screen; }
+  .hero__sparkle {
+    position:absolute; top: 18%; right: 12%; width: clamp(80px, 12vw, 180px);
+    opacity: .55; pointer-events: none;
+    animation: pulse-sparkle 8s ease-in-out infinite;
+  }
+  @keyframes pulse-sparkle {
+    0%,100% { transform: scale(1) rotate(0); opacity:.55; }
+    50%     { transform: scale(1.1) rotate(8deg); opacity: .85; }
+  }
+
+  .programs-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .program { padding: 3rem 2rem; background: color-mix(in oklab, var(--color-violet) 30%, transparent); border:1px solid color-mix(in oklab, var(--color-sand) 14%, transparent); border-radius: 10px; transition: all 400ms var(--ease-aura); }
+  .program:hover { transform: translateY(-6px); border-color: var(--color-sand); }
+  .program__num { font-family: var(--font-nicko); font-size: 3rem; color: var(--color-sand); opacity: 0.5; line-height:1; }
+  .program h3 { font-size: 1.5rem; margin-block: 1rem 0.5rem; }
+  .program__duration { display:block; font-family: var(--font-body); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-aura); margin-bottom: 1rem; }
+  .program p { color: var(--color-stone); font-size: 0.95rem; }
+  @media (max-width: 768px) { .programs-grid { grid-template-columns: 1fr; } }
+
+  .mary { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .mary__photo img { width: 100%; border-radius: 6px; filter: grayscale(15%) saturate(0.95); }
+  @media (max-width: 768px) { .mary { grid-template-columns: 1fr; gap: 2rem; } }
+
+  .cta { background: radial-gradient(ellipse at center, color-mix(in oklab, var(--color-violet) 40%, transparent), transparent 70%), var(--color-eclipse); }
+
+  .proof-strip { padding-block: 1.25rem; background: color-mix(in oklab, var(--color-eclipse) 92%, var(--color-violet)); border-block: 1px solid color-mix(in oklab, var(--color-sand) 8%, transparent); }
+  .proof-strip__line { text-align: center; font-family: var(--font-display); font-style: italic; font-size: clamp(0.85rem, 1vw + 0.4rem, 1.1rem); color: var(--color-stone); }
+</style>
