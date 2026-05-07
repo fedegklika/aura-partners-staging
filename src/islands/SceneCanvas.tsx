@@ -29,19 +29,23 @@ const COLORS = {
   stone:    '#B1AA9F'
 } as const;
 
-/* AURA wordmark — fades + scales by beat */
+/* AURA wordmark — locked center, fade-out only (no return), no wobble rotation */
 function AuraWordmark({ beat }: { beat: number }) {
   const ref = useRef<THREE.Group>(null);
+  const matRef = useRef<THREE.MeshPhysicalMaterial>(null);
   useFrame(() => {
     if (!ref.current) return;
-    // Visibility curve: peak at beat 0.0, fade by 0.45, hidden until 0.8 then soft return
-    const visibility = beat < 0.45
-      ? 1 - Math.pow(beat / 0.45, 2)
-      : beat > 0.85
-        ? (beat - 0.85) * 4
+    // Smooth fade-out: full opacity until beat 0.25, fade 0.25→0.55, hidden after
+    const visibility = beat < 0.25
+      ? 1
+      : beat < 0.55
+        ? 1 - (beat - 0.25) / 0.3
         : 0;
-    ref.current.scale.setScalar(0.85 + visibility * 0.18);
-    (ref.current as any).children?.[0]?.material && ((ref.current as any).children[0].material.opacity = visibility);
+    ref.current.scale.setScalar(0.96 + visibility * 0.06);
+    if (matRef.current) matRef.current.opacity = visibility;
+    // NO rotation/wobble — locked at center
+    ref.current.rotation.set(0, 0, 0);
+    ref.current.position.set(0, 0, 0);
   });
   return (
     <group ref={ref}>
@@ -52,20 +56,21 @@ function AuraWordmark({ beat }: { beat: number }) {
           letterSpacing={0.02}
           anchorX="center"
           anchorY="middle"
-          outlineWidth={0.012}
+          outlineWidth={0.014}
           outlineColor={COLORS.eclipse}
-          outlineOpacity={0.4}
+          outlineOpacity={0.5}
         >
           AURA
           <meshPhysicalMaterial
+            ref={matRef}
             attach="material"
             color={COLORS.sand}
-            roughness={0.32}
-            metalness={0.85}
-            clearcoat={0.55}
-            clearcoatRoughness={0.22}
-            reflectivity={0.7}
-            envMapIntensity={1.6}
+            roughness={0.28}
+            metalness={0.92}
+            clearcoat={0.7}
+            clearcoatRoughness={0.18}
+            reflectivity={0.85}
+            envMapIntensity={2.4}
             transparent
             opacity={1}
           />
@@ -191,18 +196,17 @@ function SparkleField({ beat, count }: { beat: number; count: number }) {
   );
 }
 
-/* Camera rig — beat-driven journey */
+/* Camera rig — subtle dolly only, NO horizontal sway, NO lookAt drift */
 function CameraRig({ beat }: { beat: number }) {
   const { camera } = useThree();
   useFrame(() => {
-    // 5 keyframes Y/Z dolly + rotation
-    const targetZ = 6 - beat * 1.5;
-    const targetY = -0.3 + beat * 0.3;
-    const targetX = Math.sin(beat * Math.PI) * 0.4;
-    camera.position.x += (targetX - camera.position.x) * 0.05;
+    // Subtle Z dolly: hero close → mid distant → end slight return
+    const targetZ = 5.4 + beat * 0.6;
+    const targetY = -0.2 + beat * 0.15;
+    camera.position.x += (0 - camera.position.x) * 0.06;
     camera.position.y += (targetY - camera.position.y) * 0.05;
     camera.position.z += (targetZ - camera.position.z) * 0.05;
-    camera.lookAt(0, 0.2 + Math.sin(beat * Math.PI * 0.5) * 0.3, 0);
+    camera.lookAt(0, 0, 0);
   });
   return null;
 }
@@ -262,7 +266,7 @@ export default function SceneCanvas() {
     return () => cancelAnimationFrame(raf);
   }, [reduced]);
 
-  const sparkleCount = coarse ? 160 : 320;
+  const sparkleCount = coarse ? 90 : 180;
 
   return (
     <Canvas
@@ -300,11 +304,10 @@ export default function SceneCanvas() {
 
         <Environment preset="night" environmentIntensity={0.4} background={false} />
 
-        <Float speed={0.5} rotationIntensity={0.05} floatIntensity={0.18} enabled={!reduced}>
-          <AuraWordmark beat={beat} />
-        </Float>
+        {/* AURA wordmark NO Float wrapper — keep centered locked */}
+        <AuraWordmark beat={beat} />
 
-        <Float speed={0.8} rotationIntensity={0.1} floatIntensity={0.25} enabled={!reduced}>
+        <Float speed={0.6} rotationIntensity={0.08} floatIntensity={0.18} enabled={!reduced}>
           <AuraIso beat={beat} />
         </Float>
 
